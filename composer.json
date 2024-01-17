@@ -13,11 +13,17 @@
     {
       "name": "Arhey",
       "role": "developer"
+    },
+    {
+      "name": "tacman",
+      "role": "developer"
     }
   ],
   "require": {
-    "tightenco/collect": "^9.0",
-    "guzzlehttp/guzzle": "^7.0"
+    "php":"^8.2",
+    "illuminate/collections": "^10.0",
+    "guzzlehttp/guzzle": "^7.0",
+    "symfony/http-client": "^6.4||^7.0"
   },
   "autoload": {
     "psr-4": {
