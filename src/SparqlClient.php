@@ -26,9 +26,9 @@ class SparqlClient {
 
   /**
    * Request method
-   * @var array
+   * @var string
    */
-  private $method = 'GET';
+  private string $method = 'GET';
 
   /**
    * Query SPARQL endpoint
@@ -38,7 +38,6 @@ class SparqlClient {
    *
    * @return array List of results, one row per array element
    *               Each row will contain fields indexed by variable name.
-   * @throws SparqlException
    */
   public function execute( $query, $rawData = false ) {
 

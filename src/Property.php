@@ -31,7 +31,7 @@ class Property
 
   /**
    * Parse input data
-   * 
+   *
    * @param array $data
    */
   private function parseData($data)
@@ -41,8 +41,6 @@ class Property
 
     $this->id = get_id($flatten[0]['prop']);
     $this->label = $flatten[0]['propertyLabel'];
-    $this->values = $grouped->values()->map(function($v) {
-      return new Value($v->toArray());
-    });
+    $this->values = $grouped->values()->map(fn($v)  => new Value($v->toArray()));
   }
 }
