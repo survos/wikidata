@@ -1,14 +1,14 @@
 {
-  "name": "freearhey/wikidata",
+  "name": "survos/wikidata",
   "description": "A PHP client for working with Wikidata API.",
   "keywords": [
     "wikidata",
     "client",
     "php"
   ],
-  "homepage": "https://github.com/freearhey/wikidata",
+  "homepage": "https://github.com/survos/wikidata",
   "license": "MIT",
-  "version": "3.6.0",
+  "version": "4.0.0",
   "authors": [
     {
       "name": "Arhey",
@@ -16,7 +16,7 @@
     }
   ],
   "require": {
-    "tightenco/collect": "^8.0",
+    "tightenco/collect": "^9.0",
     "guzzlehttp/guzzle": "^7.0"
   },
   "autoload": {

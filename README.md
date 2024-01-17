@@ -4,10 +4,13 @@
 
 Wikidata provides a API for searching and retrieving data from [wikidata.org](https://www.wikidata.org).
 
+Fork of https://github.com/freearhey/wikidata
+@todo: consider https://github.com/freearhey/wikidata/compare/master...JamesFrost:wikidata:master
+
 ## Installation
 
 ```sh
-composer require freearhey/wikidata
+composer require survos/wikidata
 ```
 
 ## Usage
