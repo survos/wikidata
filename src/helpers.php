@@ -1,4 +1,5 @@
 <?php
+// @todo:move to namespace, etc.  NOT global!
 
 /**
  * Check if given string is valid Wikidata entity ID
@@ -7,9 +8,11 @@
  *
  * @return bool Return true if string is valid or false
  */
-function is_qid($value)
-{
-    return preg_match("/^Q[0-9]+/", $value);
+if (!function_exists('is_qid')) {
+    function is_qid($value)
+    {
+        return preg_match("/^Q[0-9]+/", $value);
+    }
 }
 
 /**
@@ -19,9 +22,11 @@ function is_qid($value)
  *
  * @return bool Return true if string is valid or false
  */
-function is_pid($value)
-{
-    return preg_match("/^P[0-9]+/", $value);
+if (!function_exists('is_pid')) {
+    function is_pid($value)
+    {
+        return preg_match("/^P[0-9]+/", $value);
+    }
 }
 
 /**
@@ -31,9 +36,12 @@ function is_pid($value)
  *
  * @return string
  */
-function get_id($string)
-{
-  preg_match('/(Q|P)\d+/i', $string, $matches);
+if (!function_exists('get_id')) {
 
-  return !empty($matches) ? $matches[0] : $string;
+    function get_id($string)
+    {
+        preg_match('/(Q|P)\d+/i', $string, $matches);
+
+        return !empty($matches) ? $matches[0] : $string;
+    }
 }
