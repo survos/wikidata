@@ -27,7 +27,7 @@ class ApiClient
      *
      * @return \Illuminate\Support\Collection
      */
-    public function getEntities(array|string $ids, $lang = 'en', array|string $props = []): Collection
+    public function getEntities(array|string $ids, string $lang = 'en', array|string $props = []): Collection
     {
         $ids = is_array($ids) ? implode('|', $ids) : $ids;
 

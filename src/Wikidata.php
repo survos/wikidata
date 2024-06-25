@@ -29,7 +29,7 @@ class Wikidata
 
     $entities = $client->getEntities($ids, $lang, ['sitelinks/urls', 'aliases', 'descriptions', 'labels']);
 
-    $output = $entities->map(function ($item) use ($lang) {
+    $output = $entities->map(function ($item) use ($lang): \Wikidata\SearchResult {
       $entity = new Entity($item, $lang);
       return new SearchResult($entity->toArray(), $lang);
     });
@@ -47,7 +47,7 @@ class Wikidata
    *
    * @return \Illuminate\Support\Collection Return collection of \Wikidata\SearchResult
    */
-  public function searchBy($property, $value = null, $lang = 'en', int $limit = 10)
+  public function searchBy(string $property, $value = null, $lang = 'en', int $limit = 10)
   {
     if (!is_pid($property)) {
       throw new Exception("First argument in searchBy() must be a valid Wikidata property ID (e.g.: P646).", 1);
@@ -69,13 +69,13 @@ class Wikidata
 
     $data = $client->execute($query);
 
-    $ids = collect($data)->map(fn($data) => str_replace("http://www.wikidata.org/entity/", "", $data['item']))->toArray();
+    $ids = collect($data)->map(fn($data): string|array => str_replace("http://www.wikidata.org/entity/", "", $data['item']))->toArray();
 
     $client = new ApiClient();
 
     $entities = $client->getEntities($ids, $lang, ['sitelinks/urls', 'aliases', 'descriptions', 'labels']);
 
-    $output = $entities->map(function ($data) use ($lang) {
+    $output = $entities->map(function ($data) use ($lang): \Wikidata\SearchResult {
       $entity = new Entity($data, $lang);
       return new SearchResult($entity->toArray(), $lang);
     });
@@ -91,7 +91,7 @@ class Wikidata
    *
    * @return \Wikidata\Entity Return entity
    */
-  public function get($entityId, $lang = 'en')
+  public function get(string $entityId, string $lang = 'en'): \Wikidata\Entity
   {
     if (!is_qid($entityId)) {
       throw new Exception("First argument in get() must by a valid Wikidata entity ID (e.g.: Q646).", 1);

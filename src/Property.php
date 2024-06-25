@@ -41,6 +41,6 @@ class Property
 
     $this->id = get_id($flatten[0]['prop']);
     $this->label = $flatten[0]['propertyLabel'];
-    $this->values = $grouped->values()->map(fn($v)  => new Value($v->toArray()));
+    $this->values = $grouped->values()->map(fn($v): \Wikidata\Value  => new Value($v->toArray()));
   }
 }

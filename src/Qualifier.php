@@ -32,7 +32,7 @@ class Qualifier
    * 
    * @param array $data
    */
-  private function parseData($data): void
+  private function parseData(array $data): void
   {
     $this->id = get_id($data['qualifier']);
     $this->label = $data['qualifierLabel'];

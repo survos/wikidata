@@ -30,9 +30,8 @@ class SparqlClient {
 
   /**
    * Query timeout (seconds)
-   * @var int
    */
-  private $timeout = 30;
+  private int $timeout = 30;
 
   /**
    * Request method
@@ -92,7 +91,7 @@ class SparqlClient {
    *
    * @return array List of results, one row per element.
    */
-  private function extractData( $data, $rawData = false ) {
+  private function extractData( array $data, $rawData = false ): array {
     $result = [];
     if ( $data && !empty( $data['results'] ) ) {
       $vars = $data['head']['vars'];

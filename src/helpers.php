@@ -9,7 +9,7 @@
  * @return bool Return true if string is valid or false
  */
 if (!function_exists('is_qid')) {
-    function is_qid($value)
+    function is_qid($value): int|false
     {
         return preg_match("/^Q[0-9]+/", (string) $value);
     }
@@ -23,7 +23,7 @@ if (!function_exists('is_qid')) {
  * @return bool Return true if string is valid or false
  */
 if (!function_exists('is_pid')) {
-    function is_pid($value)
+    function is_pid($value): int|false
     {
         return preg_match("/^P[0-9]+/", (string) $value);
     }

@@ -49,7 +49,7 @@ class Entity
    *
    * @param array $data
    */
-  private function parseData($data): void
+  private function parseData(array $data): void
   {
     $lang = $this->lang;
     $site = $lang . 'wiki';
@@ -69,14 +69,14 @@ class Entity
   public function parseProperties(array|Collection $data): void
   {
     $collection = (new Collection($data))->groupBy('prop');
-    $this->properties = $collection->mapWithKeys(function ($item) {
+    $this->properties = $collection->mapWithKeys(function ($item): array {
       $property = new Property($item);
 
       return [$property->id => $property];
     });
   }
 
-  public function toArray()
+  public function toArray(): array
   {
     return [
       'id' => $this->id,

@@ -34,11 +34,11 @@ class Value
    *
    * @param array $data
    */
-  private function parseData($data): void
+  private function parseData(array $data): void
   {
     $this->id = get_id($data[0]['propertyValue']);
     $this->label = $data[0]['propertyValueLabel'];
-    $this->qualifiers = collect($data)->map(function($item) {
+    $this->qualifiers = collect($data)->map(function(array $item): ?\Wikidata\Qualifier {
       if($item['qualifier']) {
         return new Qualifier($item);
       }
