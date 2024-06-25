@@ -7,7 +7,7 @@ use Wikidata\Wikidata;
 
 class WikidataTest extends TestCase
 {
-  protected $wikidata;
+  protected Wikidata $wikidata;
 
   public function setUp(): void
   {

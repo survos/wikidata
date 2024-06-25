@@ -2,6 +2,7 @@
 
 namespace Wikidata;
 
+use Illuminate\Support\Collection;
 use Wikidata\Property;
 
 class Entity
@@ -34,12 +35,9 @@ class Entity
   /**
    * @var string Entity description
    */
-  public $description;
+  public string $description;
 
-  /**
-   * @var \Illuminate\Support\Collection Collection of entity properties
-   */
-  public $properties = [];
+  public Collection $properties;
 
   /**
    * @param array $data
@@ -48,6 +46,7 @@ class Entity
   public function __construct($data, $lang)
   {
     $this->lang = $lang;
+    $this->properties = new Collection();
     $this->parseData($data);
   }
 
@@ -71,11 +70,11 @@ class Entity
   /**
    * Parse entity properties from sparql result
    *
-   * @param array $data
+   * @param Collection $data
    */
-  public function parseProperties($data)
+  public function parseProperties(array|Collection $data)
   {
-    $collection = collect($data)->groupBy('prop');
+    $collection = (new Collection($data))->groupBy('prop');
     $this->properties = $collection->mapWithKeys(function ($item) {
       $property = new Property($item);
 

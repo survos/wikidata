@@ -3,19 +3,14 @@
 namespace Wikidata;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Collection;
 
 class ApiClient
 {
   const API_ENDPOINT = 'https://www.wikidata.org/w/api.php';
 
-  /**
-   * @var string Value Id
-   */
-  private $client;
+  private Client $client;
 
-  /**
-   * @param array $data
-   */
   public function __construct()
   {
     $this->client = new Client();
@@ -24,13 +19,13 @@ class ApiClient
   /**
    * Get all entities by their ids from wikidata api
    *
-   * @param string $ids The IDs of the entities to get the data from (eg.: Q2)
+   * @param array|string $ids The IDs of the entities to get the data from (eg.: Q2, Q2|Q3)
    * @param string $lang Language (default: en)
-   * @param string $props Array of the properties to get back from each entity (supported: aliases, claims, datatype, descriptions, info, labels, sitelinks, sitelinks/urls)
+   * @param array|string $props Array of the properties to get back from each entity (supported: aliases, claims, datatype, descriptions, info, labels, sitelinks, sitelinks/urls)
    *
    * @return \Illuminate\Support\Collection
    */
-  public function getEntities($ids, $lang = 'en', $props = [])
+  public function getEntities(array|string $ids, $lang = 'en', array|string $props=[]): Collection
   {
     $ids = is_array($ids) ? implode('|', $ids) : $ids;
 
@@ -59,11 +54,11 @@ class ApiClient
    *
    * @param string $query
    * @param string $lang Language (default: en)
-   * @param string $limit Max count of returning items (default: 10)
+   * @param int $limit Max count of returning items (default: 10)
    *
    * @return \Illuminate\Support\Collection
    */
-  public function searchEntities($query, $lang = 'en', $limit = 10)
+  public function searchEntities($query, $lang = 'en', int $limit = 10)
   {
     $response = $this->client->get(self::API_ENDPOINT, [
       'query' => [

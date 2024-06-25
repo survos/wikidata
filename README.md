@@ -1,13 +1,16 @@
 [![wikidata](https://raw.githubusercontent.com/maxlath/wikidata-cli/master/assets/wikidata_logo_alone.jpg)](https://wikidata.org)
 
-# Wikidata [![Build Status](https://travis-ci.org/freearhey/wikidata.svg?branch=master)](https://travis-ci.org/freearhey/wikidata)
+# Wikidata
 
 Wikidata provides a API for searching and retrieving data from [wikidata.org](https://www.wikidata.org).
+
+Fork of https://github.com/freearhey/wikidata
+@todo: consider https://github.com/freearhey/wikidata/compare/master...JamesFrost:wikidata:master
 
 ## Installation
 
 ```sh
-composer require freearhey/wikidata
+composer require survos/wikidata
 ```
 
 ## Usage
@@ -208,7 +211,7 @@ vendor/bin/phpunit
 
 ### Contribution
 
-If you find a bug or want to contribute to the code or documentation, you can help by submitting an [issue](https://github.com/freearhey/wikidata/issues) or a [pull request](https://github.com/freearhey/wikidata/pulls).
+If you find a bug or want to contribute to the code or documentation, you can help by submitting an [issue](https://github.com/survos/wikidata/issues) or a [pull request](https://github.com/freearhey/wikidata/pulls).
 
 ### License
 

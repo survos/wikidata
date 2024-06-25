@@ -1,24 +1,28 @@
 {
-  "name": "freearhey/wikidata",
+  "name": "survos/wikidata",
   "description": "A PHP client for working with Wikidata API.",
   "keywords": [
     "wikidata",
     "client",
     "php"
   ],
-  "homepage": "https://github.com/freearhey/wikidata",
+  "homepage": "https://github.com/survos/wikidata",
   "license": "MIT",
-  "version": "3.6.0",
+  "version": "5.0.0",
   "authors": [
     {
       "name": "Arhey",
       "role": "developer"
+    },
+    {
+      "name": "tacman",
+      "role": "developer"
     }
   ],
   "require": {
-    "php": "^7.4|^8.0",
-    "tightenco/collect": "^8.0|^9.0",
-    "guzzlehttp/guzzle": "^7.0"
+    "php": "^8.2",
+    "illuminate/collections": "^10.0|^11.0",
+    "symfony/http-client": "^6.4||^7.0"
   },
   "autoload": {
     "psr-4": {
@@ -37,6 +41,7 @@
     ]
   },
   "require-dev": {
-    "phpunit/phpunit": "^9.0"
+    "phpunit/phpunit": "^9.0",
+    "phpstan/phpstan": "^1.10"
   }
 }
