@@ -3,9 +3,19 @@
 namespace Wikidata;
 
 use Exception;
-use GuzzleHttp\Client;
+use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class SparqlClient {
+
+    public function __construct(
+        private ?HttpClientInterface $client=null
+    )
+    {
+        if (!$this->client) {
+            $this->client = HttpClient::create();
+        }
+    }
 
   /**
    * Limit on how long can be the query to be sent by GET.
@@ -46,9 +56,7 @@ class SparqlClient {
       $this->method = 'POST';
     }
 
-    $client = new Client();
-
-    $response = $client->request( $this->method, self::SPARQL_ENDPOINT, [
+    $response = $this->client->request( $this->method, self::SPARQL_ENDPOINT, [
         'query' => [
           "query" => $query,
           "format" => "json",
@@ -62,7 +70,7 @@ class SparqlClient {
       throw new Exception( 'HTTP Error' );
     }
 
-    $result = $response->getBody();
+    $result = $response->getContent();
 
     $data = json_decode( $result, true );
 

@@ -50,6 +50,7 @@ class WikidataTest extends TestCase
   {
     $results = $this->wikidata->search('asdfgh');
 
+
     $this->assertInstanceOf('Illuminate\Support\Collection', $results);
 
     $this->assertEquals(true, $results->isEmpty());
