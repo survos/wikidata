@@ -34,7 +34,7 @@ class Value
    *
    * @param array $data
    */
-  private function parseData($data)
+  private function parseData($data): void
   {
     $this->id = get_id($data[0]['propertyValue']);
     $this->label = $data[0]['propertyValueLabel'];

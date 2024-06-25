@@ -69,9 +69,7 @@ class Wikidata
 
     $data = $client->execute($query);
 
-    $ids = collect($data)->map(function ($data) {
-      return str_replace("http://www.wikidata.org/entity/", "", $data['item']);
-    })->toArray();
+    $ids = collect($data)->map(fn($data) => str_replace("http://www.wikidata.org/entity/", "", $data['item']))->toArray();
 
     $client = new ApiClient();
 

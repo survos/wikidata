@@ -13,24 +13,24 @@ class ValueTest extends TestCase
     $this->value = new Value($this->dummyProperties);
   }
 
-  public function testGetValueId()
+  public function testGetValueId(): void
   {
     $id = str_replace('http://www.wikidata.org/entity/', '', $this->dummyProperties[0]['propertyValue']);
 
     $this->assertEquals($id, $this->value->id);
   }
 
-  public function testGetValueLabel()
+  public function testGetValueLabel(): void
   {
     $this->assertEquals($this->dummyProperties[0]['propertyValueLabel'], $this->value->label);
   }
 
-  public function testGetValueQualifiers()
+  public function testGetValueQualifiers(): void
   {
     $qualifiers = $this->value->qualifiers;
 
-    $this->assertInstanceOf('Illuminate\Support\Collection', $qualifiers);
+    $this->assertInstanceOf(\Illuminate\Support\Collection::class, $qualifiers);
 
-    $this->assertInstanceOf('Wikidata\Qualifier', $qualifiers->first());
+    $this->assertInstanceOf(\Wikidata\Qualifier::class, $qualifiers->first());
   }
 }

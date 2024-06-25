@@ -11,7 +11,7 @@
 if (!function_exists('is_qid')) {
     function is_qid($value)
     {
-        return preg_match("/^Q[0-9]+/", $value);
+        return preg_match("/^Q[0-9]+/", (string) $value);
     }
 }
 
@@ -25,7 +25,7 @@ if (!function_exists('is_qid')) {
 if (!function_exists('is_pid')) {
     function is_pid($value)
     {
-        return preg_match("/^P[0-9]+/", $value);
+        return preg_match("/^P[0-9]+/", (string) $value);
     }
 }
 
@@ -40,7 +40,7 @@ if (!function_exists('get_id')) {
 
     function get_id($string)
     {
-        preg_match('/(Q|P)\d+/i', $string, $matches);
+        preg_match('/(Q|P)\d+/i', (string) $string, $matches);
 
         return !empty($matches) ? $matches[0] : $string;
     }

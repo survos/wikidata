@@ -28,32 +28,32 @@ class SearchResultTest extends TestCase
     $this->result = new SearchResult($collection);
   }
 
-  public function testGetResultId()
+  public function testGetResultId(): void
   {
     $this->assertEquals($this->dummy['id'], $this->result->id);
   }
 
-  public function testGetResultLang()
+  public function testGetResultLang(): void
   {
     $this->assertEquals($this->dummy['lang'], $this->result->lang);
   }
 
-  public function testGetResultLabel()
+  public function testGetResultLabel(): void
   {
     $this->assertEquals($this->dummy['label'], $this->result->label);
   }
 
-  public function testGetResultWikiUrl()
+  public function testGetResultWikiUrl(): void
   {
     $this->assertEquals($this->dummy['wiki_url'], $this->result->wiki_url);
   }
 
-  public function testGetResultAliases()
+  public function testGetResultAliases(): void
   {
     $this->assertEquals($this->dummy['aliases'], $this->result->aliases);
   }
 
-  public function testGetResultDescription()
+  public function testGetResultDescription(): void
   {
     $this->assertEquals($this->dummy['description'], $this->result->description);
   }

@@ -13,11 +13,6 @@ class Entity
   public $id;
 
   /**
-   * @var string Entity language
-   */
-  public $lang;
-
-  /**
    * @var string Entity label
    */
   public $label;
@@ -43,9 +38,8 @@ class Entity
    * @param array $data
    * @param string $lang
    */
-  public function __construct($data, $lang)
+  public function __construct($data, public $lang)
   {
-    $this->lang = $lang;
     $this->properties = new Collection();
     $this->parseData($data);
   }
@@ -55,7 +49,7 @@ class Entity
    *
    * @param array $data
    */
-  private function parseData($data)
+  private function parseData($data): void
   {
     $lang = $this->lang;
     $site = $lang . 'wiki';
@@ -72,7 +66,7 @@ class Entity
    *
    * @param Collection $data
    */
-  public function parseProperties(array|Collection $data)
+  public function parseProperties(array|Collection $data): void
   {
     $collection = (new Collection($data))->groupBy('prop');
     $this->properties = $collection->mapWithKeys(function ($item) {

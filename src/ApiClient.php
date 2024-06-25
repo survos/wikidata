@@ -8,7 +8,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class ApiClient
 {
-    const API_ENDPOINT = 'https://www.wikidata.org/w/api.php';
+    public const API_ENDPOINT = 'https://www.wikidata.org/w/api.php';
 
 
     public function __construct(private ?HttpClientInterface $client=null)
@@ -46,7 +46,7 @@ class ApiClient
 
         $results = json_decode($response->getContent(), true);
 
-        $data = isset($results['entities']) ? $results['entities'] : [];
+        $data = $results['entities'] ?? [];
 
         return collect($data);
     }
@@ -77,7 +77,7 @@ class ApiClient
 
         $results = json_decode($response->getContent(), true);
 
-        $data = isset($results['search']) ? $results['search'] : [];
+        $data = $results['search'] ?? [];
 
         return collect($data);
     }

@@ -14,15 +14,15 @@ class WikidataTest extends TestCase
     $this->wikidata = new Wikidata();
   }
 
-  public function testSearchByTerm()
+  public function testSearchByTerm(): void
   {
     $results = $this->wikidata->search('London');
 
-    $this->assertInstanceOf('Illuminate\Support\Collection', $results);
+    $this->assertInstanceOf(\Illuminate\Support\Collection::class, $results);
 
     $result = $results->first();
 
-    $this->assertInstanceOf('Wikidata\SearchResult', $result);
+    $this->assertInstanceOf(\Wikidata\SearchResult::class, $result);
 
     $this->assertEquals(true, property_exists($result, 'id'));
     $this->assertEquals(true, property_exists($result, 'lang'));
@@ -32,39 +32,39 @@ class WikidataTest extends TestCase
     $this->assertEquals(true, property_exists($result, 'wiki_url'));
   }
 
-  public function testSearchOnAnotherLanguage()
+  public function testSearchOnAnotherLanguage(): void
   {
     $results = $this->wikidata->search('London', 'fr');
 
     $this->assertEquals('fr', $results->first()->lang);
   }
 
-  public function testSearchWithLimit()
+  public function testSearchWithLimit(): void
   {
     $results = $this->wikidata->search('car', 'en', 10);
 
     $this->assertEquals(10, $results->count());
   }
 
-  public function testSearchResultsCouldBeEmpty()
+  public function testSearchResultsCouldBeEmpty(): void
   {
     $results = $this->wikidata->search('asdfgh');
 
 
-    $this->assertInstanceOf('Illuminate\Support\Collection', $results);
+    $this->assertInstanceOf(\Illuminate\Support\Collection::class, $results);
 
     $this->assertEquals(true, $results->isEmpty());
   }
 
-  public function testSearchByPropertyIdAndValue()
+  public function testSearchByPropertyIdAndValue(): void
   {
     $results = $this->wikidata->searchBy('P646', '/m/02mjmr');
 
-    $this->assertInstanceOf('Illuminate\Support\Collection', $results);
+    $this->assertInstanceOf(\Illuminate\Support\Collection::class, $results);
 
     $result = $results->first();
 
-    $this->assertInstanceOf('Wikidata\SearchResult', $result);
+    $this->assertInstanceOf(\Wikidata\SearchResult::class, $result);
 
     $this->assertEquals(true, property_exists($result, 'id'));
     $this->assertEquals(true, property_exists($result, 'lang'));
@@ -74,36 +74,36 @@ class WikidataTest extends TestCase
     $this->assertEquals(true, property_exists($result, 'wiki_url'));
   }
 
-  public function testSearchByThrowExceptionIfSecondPropertyMissing()
+  public function testSearchByThrowExceptionIfSecondPropertyMissing(): void
   {
     $this->expectException(Exception::class);
 
     $this->wikidata->searchBy('P646');
   }
 
-  public function testSearchByThrowExceptionIfPropertyIdInvalid()
+  public function testSearchByThrowExceptionIfPropertyIdInvalid(): void
   {
     $this->expectException(Exception::class);
 
     $this->wikidata->searchBy('Pasd', '/m/02mjmr');
   }
 
-  public function testSearchByPropertyIdAndEntityId()
+  public function testSearchByPropertyIdAndEntityId(): void
   {
     $results = $this->wikidata->searchBy('P39', 'Q11696');
 
-    $this->assertInstanceOf('Illuminate\Support\Collection', $results);
+    $this->assertInstanceOf(\Illuminate\Support\Collection::class, $results);
 
     $result = $results->first();
 
-    $this->assertInstanceOf('Wikidata\SearchResult', $result);
+    $this->assertInstanceOf(\Wikidata\SearchResult::class, $result);
   }
 
-  public function testGetEntityById()
+  public function testGetEntityById(): void
   {
     $entity = $this->wikidata->get('Q44077');
 
-    $this->assertInstanceOf('Wikidata\Entity', $entity);
+    $this->assertInstanceOf(\Wikidata\Entity::class, $entity);
 
     $this->assertEquals(true, property_exists($entity, 'id'));
     $this->assertEquals(true, property_exists($entity, 'lang'));
@@ -113,14 +113,14 @@ class WikidataTest extends TestCase
     $this->assertEquals(true, property_exists($entity, 'wiki_url'));
   }
 
-  public function testGetEntityOnAnotherLanguage()
+  public function testGetEntityOnAnotherLanguage(): void
   {
     $entity = $this->wikidata->get('Q44077', 'es');
 
     $this->assertEquals('es', $entity->lang);
   }
 
-  public function testGetEntityThrowExceptionIfEntityIdInvalid()
+  public function testGetEntityThrowExceptionIfEntityIdInvalid(): void
   {
     $this->expectException(Exception::class);
 

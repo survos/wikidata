@@ -34,7 +34,7 @@ class Property
    *
    * @param array $data
    */
-  private function parseData($data)
+  private function parseData($data): void
   {
     $grouped = collect($data)->groupBy('statement');
     $flatten = $grouped->flatten(1);

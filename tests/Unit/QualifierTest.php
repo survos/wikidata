@@ -13,19 +13,19 @@ class QualifierTest extends TestCase
     $this->qualifier = new Qualifier($this->dummyProperties[0]);
   }
 
-  public function testGetQualifierId()
+  public function testGetQualifierId(): void
   {
     $id = str_replace('http://www.wikidata.org/entity/', '', $this->dummyProperties[0]['qualifier']);
 
     $this->assertEquals($id, $this->qualifier->id);
   }
 
-  public function testGetQualifierLabel()
+  public function testGetQualifierLabel(): void
   {
     $this->assertEquals($this->dummyProperties[0]['qualifierLabel'], $this->qualifier->label);
   }
 
-  public function testGetQualifierValue()
+  public function testGetQualifierValue(): void
   {
     $this->assertEquals($this->dummyProperties[0]['qualifierValueLabel'], $this->qualifier->value);
   }

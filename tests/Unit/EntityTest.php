@@ -15,53 +15,53 @@ class EntityTest extends TestCase
     $this->entity = new Entity($this->dummy[0], $this->lang);
   }
 
-  public function testGetEntityId()
+  public function testGetEntityId(): void
   {
     $this->assertEquals($this->dummy[0]['id'], $this->entity->id);
   }
 
-  public function testGetEntityLang()
+  public function testGetEntityLang(): void
   {
     $this->assertEquals($this->lang, $this->entity->lang);
   }
 
-  public function testGetEntityLabel()
+  public function testGetEntityLabel(): void
   {
     $this->assertEquals($this->dummy[0]['labels'][$this->lang]['value'], $this->entity->label);
   }
 
-  public function testGetEntityDescription()
+  public function testGetEntityDescription(): void
   {
     $this->assertEquals($this->dummy[0]['descriptions'][$this->lang]['value'], $this->entity->description);
   }
 
-  public function testGetWikiUrl()
+  public function testGetWikiUrl(): void
   {
     $this->assertEquals($this->dummy[0]['sitelinks'][$this->lang . 'wiki']['url'], $this->entity->wiki_url);
   }
 
-  public function testGetEntityAliases()
+  public function testGetEntityAliases(): void
   {
     $aliases = collect($this->dummy[0]['aliases'][$this->lang])->pluck('value')->toArray();
 
     $this->assertEquals($aliases, $this->entity->aliases);
   }
 
-  public function testGetEntityWithoutAliases()
+  public function testGetEntityWithoutAliases(): void
   {
     $entity = new Entity($this->dummy[1], 'en');
 
     $this->assertEquals([], $entity->aliases);
   }
 
-  public function testGetEntityProperties()
+  public function testGetEntityProperties(): void
   {
     $this->entity->parseProperties($this->dummyProperties);
 
     $properties = $this->entity->properties;
 
-    $this->assertInstanceOf('Illuminate\Support\Collection', $properties);
+    $this->assertInstanceOf(\Illuminate\Support\Collection::class, $properties);
 
-    $this->assertInstanceOf('Wikidata\Property', $properties->first());
+    $this->assertInstanceOf(\Wikidata\Property::class, $properties->first());
   }
 }
