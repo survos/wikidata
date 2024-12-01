@@ -28,9 +28,9 @@ class Entity
   public $aliases = [];
 
   /**
-   * @var string Entity description
+   * @var string|null Entity description
    */
-  public string $description;
+  public ?string $description;
 
   public Collection $properties;
 
