@@ -48,7 +48,7 @@ class SparqlClient {
    * @return array List of results, one row per array element
    *               Each row will contain fields indexed by variable name.
    */
-  public function execute( $query, $rawData = false ) {
+  public function execute( $query, $rawData = false ): array {
 
     if ( strlen( $query ) > self::MAX_GET_SIZE ) {
       // big requests go to POST

@@ -47,7 +47,7 @@ class Wikidata
    *
    * @return \Illuminate\Support\Collection Return collection of \Wikidata\SearchResult
    */
-  public function searchBy(string $property, $value = null, $lang = 'en', int $limit = 10)
+  public function searchBy(string $property, $value = null, string $lang = 'en', int $limit = 10)
   {
     if (!is_pid($property)) {
       throw new Exception("First argument in searchBy() must be a valid Wikidata property ID (e.g.: P646).", 1);

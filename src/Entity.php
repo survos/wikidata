@@ -38,7 +38,7 @@ class Entity
    * @param array $data
    * @param string $lang
    */
-  public function __construct($data, public $lang)
+  public function __construct(array $data, public $lang)
   {
     $this->properties = new Collection();
     $this->parseData($data);

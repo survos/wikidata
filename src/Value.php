@@ -24,7 +24,7 @@ class Value
   /**
    * @param array $data
    */
-  public function __construct($data)
+  public function __construct(array $data)
   {
     $this->parseData($data);
   }
