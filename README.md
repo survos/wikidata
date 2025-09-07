@@ -7,6 +7,8 @@ Wikidata provides a API for searching and retrieving data from [wikidata.org](ht
 Fork of https://github.com/freearhey/wikidata
 @todo: consider https://github.com/freearhey/wikidata/compare/master...JamesFrost:wikidata:master
 
+This library is no longer used by survos/wiki-bundle, Symfony developers may want to use that directly since it adds caching and more options, and does not relay on illuminate/collections.
+
 ## Installation
 
 ```sh
