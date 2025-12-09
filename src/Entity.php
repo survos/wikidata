@@ -10,27 +10,27 @@ class Entity
   /**
    * @var string Entity Id
    */
-  public $id;
+  public string $id;
 
   /**
    * @var string Entity label
    */
-  public $label;
+  public string $label;
 
   /**
    * @var string A link to a Wikipedia article about this entity
    */
-  public $wiki_url = null;
+  public ?string $wiki_url = null;
 
   /**
    * @var string[] List of entity aliases
    */
-  public $aliases = [];
+  public array $aliases = [];
 
   /**
    * @var string|null Entity description
    */
-  public ?string $description;
+  public ?string $description=null;
 
   public Collection $properties;
 
@@ -68,7 +68,7 @@ class Entity
    */
   public function parseProperties(array|Collection $data): void
   {
-    $collection = (new Collection($data))->groupBy('prop');
+    $collection = new Collection($data)->groupBy('prop');
     $this->properties = $collection->mapWithKeys(function ($item): array {
       $property = new Property($item);
 
