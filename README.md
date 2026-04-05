@@ -1,5 +1,9 @@
 [![wikidata](https://raw.githubusercontent.com/maxlath/wikidata-cli/master/assets/wikidata_logo_alone.jpg)](https://wikidata.org)
 
+# DEPRECATED
+
+survos projects will use wiki-bundle instead, provides a persistent entity.
+
 # Wikidata
 
 Wikidata provides a API for searching and retrieving data from [wikidata.org](https://www.wikidata.org).
